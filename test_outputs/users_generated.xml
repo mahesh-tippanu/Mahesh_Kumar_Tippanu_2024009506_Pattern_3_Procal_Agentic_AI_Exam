@@ -1,7 +1,12 @@
 <data><table name='users'>
   <row>
     <id>1</id>
-    <name>Alice</name>
+    <name>Alice &amp; Bob</name>
     <email>alice@example.com</email>
+  </row>
+  <row>
+    <id>2</id>
+    <name>Charlie &lt;Admin&gt;</name>
+    <email>charlie@domain.org</email>
   </row>
 </table></data>

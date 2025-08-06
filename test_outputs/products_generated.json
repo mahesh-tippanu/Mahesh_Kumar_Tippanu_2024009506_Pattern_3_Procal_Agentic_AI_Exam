@@ -1,7 +1,12 @@
 [
     {
         "prod_id": 101,
-        "name": "Laptop",
+        "name": "Laptop \"Pro\"",
         "price": 1200
+    },
+    {
+        "prod_id": 102,
+        "name": "Mouse & Keyboard",
+        "price": 150
     }
 ]

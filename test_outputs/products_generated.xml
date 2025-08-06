@@ -1,7 +1,12 @@
 <data><table name='products'>
   <row>
     <prod_id>101</prod_id>
-    <name>Laptop</name>
+    <name>Laptop &quot;Pro&quot;</name>
     <price>1200</price>
+  </row>
+  <row>
+    <prod_id>102</prod_id>
+    <name>Mouse &amp; Keyboard</name>
+    <price>150</price>
   </row>
 </table></data>

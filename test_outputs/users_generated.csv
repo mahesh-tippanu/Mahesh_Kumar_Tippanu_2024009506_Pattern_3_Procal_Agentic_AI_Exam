@@ -1,2 +1,3 @@
 id,name,email
-1,Alice,alice@example.com
+1,Alice & Bob,alice@example.com
+2,Charlie <Admin>,charlie@domain.org
