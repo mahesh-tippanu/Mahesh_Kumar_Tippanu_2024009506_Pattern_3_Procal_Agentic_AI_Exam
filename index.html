@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Agentic AI Assistant</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .chatbox {
+      margin: 30px auto;
+      width: 90%;
+      max-width: 600px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+
+    .chat-messages {
+      height: 300px;
+      overflow-y: auto;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      padding: 10px;
+      background: #fff;
+    }
+
+    .user-message {
+      text-align: right;
+      color: blue;
+      margin: 5px 0;
+    }
+
+    .bot-message {
+      text-align: left;
+      color: green;
+      margin: 5px 0;
+    }
+
+    .chat-input {
+      display: flex;
+    }
+
+    .chat-input input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    .chat-input button {
+      margin-left: 10px;
+      padding: 10px 20px;
+      border: none;
+      background-color: #4CAF50;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .chat-input button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Agentic AI Assistant</h1>
+    <p>Your personal productivity booster powered by AI.</p>
+    <a href="#contact" class="cta-button">Get Started</a>
+  </header>
+
+  <section class="features">
+    <h2>Features</h2>
+    <div class="feature-cards">
+      <div class="card">📅 Auto Schedule Planning</div>
+      <div class="card">📨 Smart Email Drafting</div>
+      <div class="card">🧠 AI-Powered Task Suggestions</div>
+    </div>
+  </section>
+
+  <section class="how-it-works">
+    <h2>How It Works</h2>
+    <ol>
+      <li>Connect your Google account</li>
+      <li>Choose your preferences</li>
+      <li>Let Agentic AI handle the rest!</li>
+    </ol>
+  </section>
+
+  <!-- ✅ CHATBOT SECTION -->
+  <section class="chatbox">
+    <h2>Ask the Assistant</h2>
+    <div class="chat-messages" id="chatMessages"></div>
+    <div class="chat-input">
+      <input type="text" id="userInput" placeholder="Ask me something like 'Generate 100 rows for ecommerce-data-metadata.json as JSON'" />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <h2>Contact Us</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required/>
+      <input type="email" placeholder="Your Email" required/>
+      <textarea placeholder="Your Message"></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Agentic AI. All rights reserved.</p>
+  </footer>
+
+  <!-- ✅ JAVASCRIPT FOR CHATBOT -->
+  <script>
+    async function sendMessage() {
+      const input = document.getElementById("userInput");
+      const message = input.value.trim();
+      if (!message) return;
+
+      // Show user message
+      const chat = document.getElementById("chatMessages");
+      const userMsg = document.createElement("div");
+      userMsg.className = "user-message";
+      userMsg.innerText = message;
+      chat.appendChild(userMsg);
+      input.value = "";
+
+      // Send to backend
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: message })
+      });
+
+      const data = await response.json();
+
+      // Show bot response
+      const botMsg = document.createElement("div");
+      botMsg.className = "bot-message";
+      botMsg.innerText = data.response || "No response from server.";
+      chat.appendChild(botMsg);
+
+      chat.scrollTop = chat.scrollHeight;
+    }
+  </script>
+</body>
+</html>
