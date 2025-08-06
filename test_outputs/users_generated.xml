@@ -1,0 +1,7 @@
+<data><table name='users'>
+  <row>
+    <id>1</id>
+    <name>Alice</name>
+    <email>alice@example.com</email>
+  </row>
+</table></data>
